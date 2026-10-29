@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Emma Acedo Lapieza">
+<meta name="dcterms.date" content="2026-10-29">
+
+<title>Europe vs.&nbsp;America: Who Dominates the Olympics?</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="project_files/libs/clipboard/clipboard.min.js"></script>
+<script src="project_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="project_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="project_files/libs/quarto-html/popper.min.js"></script>
+<script src="project_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="project_files/libs/quarto-html/anchor.min.js"></script>
+<link href="project_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="project_files/libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="project_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="project_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="project_files/libs/bootstrap/bootstrap-bef5c62cde46e002546ab419ee4ea369.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="project_files/libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
+<script src="project_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="project_files/libs/plotly-binding-4.12.1/plotly.js"></script>
+<script src="project_files/libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="project_files/libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="project_files/libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+<script src="project_files/libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+<link href="project_files/libs/plotly-htmlwidgets-css-2.25.2/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="project_files/libs/plotly-main-2.25.2/plotly-latest.min.js"></script>
+
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-full">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Dashboard Sections</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#variables-used-in-this-project" id="toc-variables-used-in-this-project" class="nav-link" data-scroll-target="#variables-used-in-this-project">Variables Used in This Project</a></li>
+  <li><a href="#methodology-counting-medals-fairly-defining-europe" id="toc-methodology-counting-medals-fairly-defining-europe" class="nav-link" data-scroll-target="#methodology-counting-medals-fairly-defining-europe">Methodology: Counting Medals Fairly &amp; Defining Europe</a></li>
+  <li><a href="#usa-vs.-europe-olympic-medals-over-time-18962016" id="toc-usa-vs.-europe-olympic-medals-over-time-18962016" class="nav-link" data-scroll-target="#usa-vs.-europe-olympic-medals-over-time-18962016">1. USA vs.&nbsp;Europe: Olympic Medals Over Time (1896–2016)</a></li>
+  <li><a href="#top-olympic-sports-usa-vs.-selected-european-countries" id="toc-top-olympic-sports-usa-vs.-selected-european-countries" class="nav-link" data-scroll-target="#top-olympic-sports-usa-vs.-selected-european-countries">2. Top Olympic Sports: USA vs.&nbsp;Selected European Countries</a></li>
+  <li><a href="#focus-on-spain-olympic-medal-history-19002016" id="toc-focus-on-spain-olympic-medal-history-19002016" class="nav-link" data-scroll-target="#focus-on-spain-olympic-medal-history-19002016">3. Focus on Spain: Olympic Medal History (1900–2016)</a></li>
+  <li><a href="#conclusion-data-source" id="toc-conclusion-data-source" class="nav-link" data-scroll-target="#conclusion-data-source">Conclusion &amp; Data Source</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content column-page-left" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Europe vs.&nbsp;America: Who Dominates the Olympics?</h1>
+<p class="subtitle lead">Milestone 3 · Exploring 120 Years of Olympic History (1896–2016)</p>
+</div>
+
+
+
+<div class="quarto-title-meta column-page-left">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Emma Acedo Lapieza </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 29, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap');
+
+:root {
+  --bg-navy: #0b1021;
+  --card-navy: #151c33;
+  --card-navy-light: #1d2642;
+  --accent-purple: #a855f7;
+  --accent-pink: #ec4899;
+  --accent-gold: #fbbf24;
+  --text-main: #f8fafc;
+  --text-muted: #cbd5e1;
+}
+
+body {
+  background-color: var(--bg-navy) !important;
+  color: var(--text-main) !important;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.65;
+}
+
+h1, h2, h3, .title {
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+h1.title {
+  background: linear-gradient(90deg, #fbbf24, #ec4899, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+  font-size: 2.5rem;
+}
+
+.subtitle {
+  color: var(--text-muted) !important;
+  font-size: 1.15rem;
+}
+
+h2 {
+  color: var(--accent-gold) !important;
+  border-bottom: 2px solid rgba(168, 85, 247, 0.35);
+  padding-bottom: 0.4rem;
+  margin-top: 2rem;
+}
+
+a {
+  color: var(--accent-pink) !important;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+a:hover {
+  color: var(--accent-gold) !important;
+  text-decoration: underline;
+}
+
+.dashboard-card {
+  background: linear-gradient(145deg, var(--card-navy), var(--card-navy-light));
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: 14px;
+  padding: 1.4rem 1.6rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 2rem 0;
+}
+
+.kpi-box {
+  background: linear-gradient(160deg, #161f3a, #1f193d);
+  border-top: 3px solid var(--accent-gold);
+  border-radius: 12px;
+  padding: 1.1rem 1.2rem;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+.kpi-box.purple {
+  border-top-color: var(--accent-purple);
+}
+
+.kpi-box.pink {
+  border-top-color: var(--accent-pink);
+}
+
+.kpi-value {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: var(--accent-gold);
+  margin-bottom: 0.2rem;
+}
+
+.kpi-box.purple .kpi-value {
+  color: #c084fc;
+}
+
+.kpi-box.pink .kpi-value {
+  color: #f472b6;
+}
+
+.kpi-label {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.note-callout {
+  background-color: rgba(236, 72, 153, 0.12);
+  border-left: 4px solid var(--accent-pink);
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  margin: 1.2rem 0;
+}
+</style>
+<div class="cell">
+<details class="code-fold">
+<summary>Show R Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the real Kaggle Olympic dataset (271,116 rows and 15 columns)</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>olympics <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/athlete_events.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a consistent group of 12 major European Olympic countries (including Spain)</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>euro_nocs <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ESP"</span>, <span class="co"># Spain</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"GBR"</span>, <span class="co"># Great Britain</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"FRA"</span>, <span class="co"># France</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"GER"</span>, <span class="co"># Germany</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ITA"</span>, <span class="co"># Italy</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SWE"</span>, <span class="co"># Sweden</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">"NOR"</span>, <span class="co"># Norway</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="st">"NED"</span>, <span class="co"># Netherlands</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="st">"HUN"</span>, <span class="co"># Hungary</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="st">"FIN"</span>, <span class="co"># Finland</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SUI"</span>, <span class="co"># Switzerland</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="st">"POL"</span>  <span class="co"># Poland</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Count only one medal per unique event and country so team sports are not overcounted</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>medals_unique <span class="ot">&lt;-</span> olympics <span class="sc">|&gt;</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Medal)) <span class="sc">|&gt;</span> <span class="co"># Keep only medal-winning entries</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(Year, Season, Games, Sport, Event, NOC, Medal) <span class="co"># Deduplicate team medals</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div class="kpi-grid">
+  <div class="kpi-box">
+    <div class="kpi-value">271,116</div>
+    <div class="kpi-label">Athlete Entries (1896–2016)</div>
+  </div>
+  <div class="kpi-box pink">
+    <div class="kpi-value">2,823</div>
+    <div class="kpi-label">USA Unique Event Medals</div>
+  </div>
+  <div class="kpi-box purple">
+    <div class="kpi-value">6,849</div>
+    <div class="kpi-label">Selected Europe (12 Countries)</div>
+  </div>
+  <div class="kpi-box">
+    <div class="kpi-value">150</div>
+    <div class="kpi-label">Spain Unique Event Medals</div>
+  </div>
+</div>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<div class="dashboard-card">
+<p>I decided to study the Olympics because I really like sports and I am interested in comparing the United States with European countries. I want to see who has won more medals, which sports different countries are best at, and how Olympic results have changed over time. I also want to focus a little more on Spain because I am from there.</p>
+<p>This project builds on my Milestone 2 work using the <a href="https://www.kaggle.com/datasets/heesoo37/120-years-of-olympic-history-athletes-and-results"><strong>120 Years of Olympic History: Athletes and Results</strong></a> dataset from Kaggle. The dataset contains <strong>271,116 rows and 15 columns</strong>, covering both Summer and Winter Olympic Games from <strong>1896 to 2016</strong>. Because the dataset ends in <strong>2016</strong>, more recent Olympic Games (such as Tokyo 2020 or Paris 2024) are not included in this analysis.</p>
+</div>
+</section>
+<section id="variables-used-in-this-project" class="level2">
+<h2 class="anchored" data-anchor-id="variables-used-in-this-project">Variables Used in This Project</h2>
+<div class="dashboard-card">
+<p>To explore Olympic performance across countries and over time, I use the following key variables from the dataset:</p>
+<ul>
+<li><strong><code>Year</code></strong>: to see how Olympic results and medal counts change over time from 1896 to 2016.</li>
+<li><strong><code>NOC</code> and <code>Team</code></strong>: to identify countries using their official National Olympic Committee (<code>NOC</code>) 3-letter codes and team names.</li>
+<li><strong><code>Sport</code> and <code>Event</code></strong>: to compare different sports (like Swimming, Athletics, and Sailing) and individual medal events.</li>
+<li><strong><code>Medal</code></strong>: to count <code>Gold</code>, <code>Silver</code>, and <code>Bronze</code> medals won.</li>
+<li><strong><code>Sex</code></strong>: to explore differences in participation and medal counts between male (<code>M</code>) and female (<code>F</code>) athletes.</li>
+<li><strong><code>Age</code></strong>: to explore athletes’ ages across regions and sports.</li>
+</ul>
+<div class="cell">
+<details class="code-fold">
+<summary>Show R Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Quick summary of athlete age and sex among medalists in the USA and our 12 European countries</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>olympics <span class="sc">|&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Medal), NOC <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"USA"</span>, euro_nocs)) <span class="sc">|&gt;</span> <span class="co"># Keep medalists in our study group</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Region =</span> <span class="fu">if_else</span>(NOC <span class="sc">==</span> <span class="st">"USA"</span>, <span class="st">"United States"</span>, <span class="st">"Selected Europe (12 Countries)"</span>)) <span class="sc">|&gt;</span> <span class="co"># Group into USA vs Europe</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Region, Sex) <span class="sc">|&gt;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Medalist_Rows =</span> <span class="fu">n</span>(), <span class="co"># Number of medal-winning athlete rows</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">Average_Age =</span> <span class="fu">round</span>(<span class="fu">mean</span>(Age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">1</span>), <span class="co"># Mean age of medalists</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Median_Age =</span> <span class="fu">median</span>(Age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="co"># Median age of medalists</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Region"</span>, <span class="st">"Sex"</span>, <span class="st">"Medalist Athlete Entries"</span>, <span class="st">"Average Age"</span>, <span class="st">"Median Age"</span>),</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Athlete Age and Sex Overview for Medalists (1896–2016)"</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Athlete Age and Sex Overview for Medalists (1896–2016)</caption>
+<colgroup>
+<col style="width: 37%">
+<col style="width: 4%">
+<col style="width: 30%">
+<col style="width: 14%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Region</th>
+<th style="text-align: left;">Sex</th>
+<th style="text-align: right;">Medalist Athlete Entries</th>
+<th style="text-align: right;">Average Age</th>
+<th style="text-align: right;">Median Age</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Selected Europe (12 Countries)</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">3146</td>
+<td style="text-align: right;">25.8</td>
+<td style="text-align: right;">25</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Selected Europe (12 Countries)</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">11890</td>
+<td style="text-align: right;">27.7</td>
+<td style="text-align: right;">26</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">1805</td>
+<td style="text-align: right;">23.7</td>
+<td style="text-align: right;">23</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">3832</td>
+<td style="text-align: right;">25.5</td>
+<td style="text-align: right;">24</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="methodology-counting-medals-fairly-defining-europe" class="level2">
+<h2 class="anchored" data-anchor-id="methodology-counting-medals-fairly-defining-europe">Methodology: Counting Medals Fairly &amp; Defining Europe</h2>
+<div class="dashboard-card">
+<p>Two important choices make our comparison accurate and fair:</p>
+<ol type="1">
+<li><strong>Counting unique event medals instead of athlete rows:</strong> In the raw dataset, every player on a winning basketball, soccer, or rowing team gets their own row. If we simply counted rows, a single basketball gold medal would count as 12 medals! To avoid overcounting team sports, I use <code>distinct(Year, Season, Games, Sport, Event, NOC, Medal)</code> so that each country receives <strong>one medal per event</strong>.</li>
+<li><strong>Consistent European Selection (12 Countries):</strong> Throughout all charts, I use a clearly defined set of 12 European Olympic countries: <strong>Spain (<code>ESP</code>), Great Britain (<code>GBR</code>), France (<code>FRA</code>), Germany (<code>GER</code>), Italy (<code>ITA</code>), Sweden (<code>SWE</code>), Norway (<code>NOR</code>), Netherlands (<code>NED</code>), Hungary (<code>HUN</code>), Finland (<code>FIN</code>), Switzerland (<code>SUI</code>), and Poland (<code>POL</code>)</strong>.</li>
+</ol>
+<div class="note-callout">
+<p><strong>Why Group vs.&nbsp;Individual Comparisons Matter:</strong> Comparing the <strong>United States (<code>2,823</code> medals)</strong> against <strong>12 European countries combined (<code>6,849</code> medals)</strong> is very different from comparing individual countries. In the Olympics, each European nation sends its own full delegation of athletes and teams, so combining 12 countries naturally produces a larger group total. However, when we compare <strong>individual countries one-on-one</strong>, the United States (<code>2,823</code> medals) has won nearly three times as many medals as the highest-ranking European country in our group, Germany (<code>1,004</code>), followed by Great Britain (<code>919</code>) and France (<code>879</code>).</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="usa-vs.-europe-olympic-medals-over-time-18962016" class="level2">
+<h2 class="anchored" data-anchor-id="usa-vs.-europe-olympic-medals-over-time-18962016">1. USA vs.&nbsp;Europe: Olympic Medals Over Time (1896–2016)</h2>
+<div class="dashboard-card">
+<p>This first interactive chart tracks total unique event medals won in each Olympic year from <strong>1896 to 2016</strong> (combining Summer and Winter Games held in the same year). You can hover over any point to see the exact year and medal total.</p>
+<p>Notice how the 12 European countries combined usually win more medals as a group, while the United States alone reaches massive peaks (such as 1904 in St.&nbsp;Louis and 1984 in Los Angeles) and competes closely with an entire continent’s worth of teams.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show R Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count unique event medals by Year for the USA vs. the 12 selected European countries</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>medals_by_year <span class="ot">&lt;-</span> medals_unique <span class="sc">|&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(NOC <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"USA"</span>, euro_nocs)) <span class="sc">|&gt;</span> <span class="co"># Keep USA and selected European NOCs</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Group =</span> <span class="fu">if_else</span>(</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>      NOC <span class="sc">==</span> <span class="st">"USA"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>      <span class="st">"United States (USA)"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Selected Europe (12 Countries Combined)"</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Year, Group, <span class="at">name =</span> <span class="st">"Medals"</span>) <span class="co"># Count unique medals per year and group</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the ggplot2 time-series line chart</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(medals_by_year, <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> Medals, <span class="at">color =</span> Group)) <span class="sc">+</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.1</span>) <span class="sc">+</span> <span class="co"># Draw trend lines over time</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.3</span>) <span class="sc">+</span> <span class="co"># Highlight each Olympic year</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Selected Europe (12 Countries Combined)"</span> <span class="ot">=</span> <span class="st">"#a855f7"</span>,</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>      <span class="st">"United States (USA)"</span> <span class="ot">=</span> <span class="st">"#fbbf24"</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1896</span>, <span class="dv">2016</span>, <span class="at">by =</span> <span class="dv">16</span>)) <span class="sc">+</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"USA vs. Selected European Countries: Unique Event Medals Over Time"</span>,</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Combined Summer &amp; Winter Olympic medals per Olympic year (1896–2016)"</span>,</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Olympic Year"</span>,</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Unique Event Medals Won"</span>,</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Region / Group"</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#151c33"</span>, <span class="at">color =</span> <span class="cn">NA</span>),</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#151c33"</span>, <span class="at">color =</span> <span class="cn">NA</span>),</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"#2a3558"</span>),</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#f8fafc"</span>),</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#cbd5e1"</span>),</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"top"</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to an interactive Plotly chart</span></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(p1, <span class="at">tooltip =</span> <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"colour"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layout</span>(</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">paper_bgcolor =</span> <span class="st">"#151c33"</span>,</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot_bgcolor =</span> <span class="st">"#151c33"</span>,</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">font =</span> <span class="fu">list</span>(<span class="at">color =</span> <span class="st">"#f8fafc"</span>),</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend =</span> <span class="fu">list</span>(<span class="at">orientation =</span> <span class="st">"h"</span>, <span class="at">x =</span> <span class="fl">0.05</span>, <span class="at">y =</span> <span class="fl">1.12</span>)</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-b2e30b80d0aec793b209" style="width:100%;height:510px;"></div>
+<script type="application/json" data-for="htmlwidget-b2e30b80d0aec793b209">{"x":{"data":[{"x":[1896,1900,1904,1906,1908,1912,1920,1924,1928,1932,1936,1948,1952,1956,1960,1964,1968,1972,1976,1980,1984,1988,1992,1994,1996,1998,2000,2002,2004,2006,2008,2010,2012,2014,2016],"y":[43,186,29,137,228,203,261,256,246,202,310,277,248,196,206,237,171,192,140,182,198,177,346,96,252,103,258,121,233,117,236,109,256,133,264],"text":["Year: 1896<br />Medals:  43<br />Group: Selected Europe (12 Countries Combined)","Year: 1900<br />Medals: 186<br />Group: Selected Europe (12 Countries Combined)","Year: 1904<br />Medals:  29<br />Group: Selected Europe (12 Countries Combined)","Year: 1906<br />Medals: 137<br />Group: Selected Europe (12 Countries Combined)","Year: 1908<br />Medals: 228<br />Group: Selected Europe (12 Countries Combined)","Year: 1912<br />Medals: 203<br />Group: Selected Europe (12 Countries Combined)","Year: 1920<br />Medals: 261<br />Group: Selected Europe (12 Countries Combined)","Year: 1924<br />Medals: 256<br />Group: Selected Europe (12 Countries Combined)","Year: 1928<br />Medals: 246<br />Group: Selected Europe (12 Countries Combined)","Year: 1932<br />Medals: 202<br />Group: Selected Europe (12 Countries Combined)","Year: 1936<br />Medals: 310<br />Group: Selected Europe (12 Countries Combined)","Year: 1948<br />Medals: 277<br />Group: Selected Europe (12 Countries Combined)","Year: 1952<br />Medals: 248<br />Group: Selected Europe (12 Countries Combined)","Year: 1956<br />Medals: 196<br />Group: Selected Europe (12 Countries Combined)","Year: 1960<br />Medals: 206<br />Group: Selected Europe (12 Countries Combined)","Year: 1964<br />Medals: 237<br />Group: Selected Europe (12 Countries Combined)","Year: 1968<br />Medals: 171<br />Group: Selected Europe (12 Countries Combined)","Year: 1972<br />Medals: 192<br />Group: Selected Europe (12 Countries Combined)","Year: 1976<br />Medals: 140<br />Group: Selected Europe (12 Countries Combined)","Year: 1980<br />Medals: 182<br />Group: Selected Europe (12 Countries Combined)","Year: 1984<br />Medals: 198<br />Group: Selected Europe (12 Countries Combined)","Year: 1988<br />Medals: 177<br />Group: Selected Europe (12 Countries Combined)","Year: 1992<br />Medals: 346<br />Group: Selected Europe (12 Countries Combined)","Year: 1994<br />Medals:  96<br />Group: Selected Europe (12 Countries Combined)","Year: 1996<br />Medals: 252<br />Group: Selected Europe (12 Countries Combined)","Year: 1998<br />Medals: 103<br />Group: Selected Europe (12 Countries Combined)","Year: 2000<br />Medals: 258<br />Group: Selected Europe (12 Countries Combined)","Year: 2002<br />Medals: 121<br />Group: Selected Europe (12 Countries Combined)","Year: 2004<br />Medals: 233<br />Group: Selected Europe (12 Countries Combined)","Year: 2006<br />Medals: 117<br />Group: Selected Europe (12 Countries Combined)","Year: 2008<br />Medals: 236<br />Group: Selected Europe (12 Countries Combined)","Year: 2010<br />Medals: 109<br />Group: Selected Europe (12 Countries Combined)","Year: 2012<br />Medals: 256<br />Group: Selected Europe (12 Countries Combined)","Year: 2014<br />Medals: 133<br />Group: Selected Europe (12 Countries Combined)","Year: 2016<br />Medals: 264<br />Group: Selected Europe (12 Countries Combined)"],"type":"scatter","mode":"lines+markers","line":{"width":4.1574803149606305,"color":"rgba(168,85,247,1)","dash":"solid"},"hoveron":"points","name":"Selected Europe (12 Countries Combined)","legendgroup":"Selected Europe (12 Countries Combined)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","marker":{"autocolorscale":false,"color":"rgba(168,85,247,1)","opacity":1,"size":8.6929133858267722,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(168,85,247,1)"}},"frame":null},{"x":[1896,1900,1904,1906,1908,1912,1920,1924,1928,1932,1936,1948,1952,1956,1960,1964,1968,1972,1976,1980,1984,1988,1992,1994,1996,1998,2000,2002,2004,2006,2008,2010,2012,2014,2016],"y":[19,54,230,23,46,63,95,103,62,122,61,92,87,81,81,97,112,102,104,12,181,100,119,13,101,13,91,34,101,25,110,37,103,28,121],"text":["Year: 1896<br />Medals:  19<br />Group: United States (USA)","Year: 1900<br />Medals:  54<br />Group: United States (USA)","Year: 1904<br />Medals: 230<br />Group: United States (USA)","Year: 1906<br />Medals:  23<br />Group: United States (USA)","Year: 1908<br />Medals:  46<br />Group: United States (USA)","Year: 1912<br />Medals:  63<br />Group: United States (USA)","Year: 1920<br />Medals:  95<br />Group: United States (USA)","Year: 1924<br />Medals: 103<br />Group: United States (USA)","Year: 1928<br />Medals:  62<br />Group: United States (USA)","Year: 1932<br />Medals: 122<br />Group: United States (USA)","Year: 1936<br />Medals:  61<br />Group: United States (USA)","Year: 1948<br />Medals:  92<br />Group: United States (USA)","Year: 1952<br />Medals:  87<br />Group: United States (USA)","Year: 1956<br />Medals:  81<br />Group: United States (USA)","Year: 1960<br />Medals:  81<br />Group: United States (USA)","Year: 1964<br />Medals:  97<br />Group: United States (USA)","Year: 1968<br />Medals: 112<br />Group: United States (USA)","Year: 1972<br />Medals: 102<br />Group: United States (USA)","Year: 1976<br />Medals: 104<br />Group: United States (USA)","Year: 1980<br />Medals:  12<br />Group: United States (USA)","Year: 1984<br />Medals: 181<br />Group: United States (USA)","Year: 1988<br />Medals: 100<br />Group: United States (USA)","Year: 1992<br />Medals: 119<br />Group: United States (USA)","Year: 1994<br />Medals:  13<br />Group: United States (USA)","Year: 1996<br />Medals: 101<br />Group: United States (USA)","Year: 1998<br />Medals:  13<br />Group: United States (USA)","Year: 2000<br />Medals:  91<br />Group: United States (USA)","Year: 2002<br />Medals:  34<br />Group: United States (USA)","Year: 2004<br />Medals: 101<br />Group: United States (USA)","Year: 2006<br />Medals:  25<br />Group: United States (USA)","Year: 2008<br />Medals: 110<br />Group: United States (USA)","Year: 2010<br />Medals:  37<br />Group: United States (USA)","Year: 2012<br />Medals: 103<br />Group: United States (USA)","Year: 2014<br />Medals:  28<br />Group: United States (USA)","Year: 2016<br />Medals: 121<br />Group: United States (USA)"],"type":"scatter","mode":"lines+markers","line":{"width":4.1574803149606305,"color":"rgba(251,191,36,1)","dash":"solid"},"hoveron":"points","name":"United States (USA)","legendgroup":"United States (USA)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","marker":{"autocolorscale":false,"color":"rgba(251,191,36,1)","opacity":1,"size":8.6929133858267722,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(251,191,36,1)"}},"frame":null}],"layout":{"margin":{"t":45.356579493565803,"r":8.6342880863428828,"b":44.034869240348698,"l":50.942299709423011},"plot_bgcolor":"#151c33","paper_bgcolor":"#151c33","font":{"color":"#f8fafc","family":"","size":17.268576172685766},"title":{"text":"USA vs. Selected European Countries: Unique Event Medals Over Time","font":{"color":"rgba(248,250,252,1)","family":"","size":20.722291407222919},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[1890,2022],"tickmode":"array","ticktext":["1896","1912","1928","1944","1960","1976","1992","2008"],"tickvals":[1896,1912,1928,1944,1960,1976,1992,2008],"categoryorder":"array","categoryarray":["1896","1912","1928","1944","1960","1976","1992","2008"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714414,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(203,213,225,1)","family":"","size":13.814860938148611},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(42,53,88,1)","gridwidth":0.78493528057662565,"zeroline":false,"anchor":"y","title":{"text":"Olympic Year","font":{"color":"rgba(248,250,252,1)","family":"","size":17.268576172685766}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-4.6999999999999993,362.69999999999999],"tickmode":"array","ticktext":["0","100","200","300"],"tickvals":[0,100,200.00000000000003,300],"categoryorder":"array","categoryarray":["0","100","200","300"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714414,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(203,213,225,1)","family":"","size":13.814860938148611},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(42,53,88,1)","gridwidth":0.78493528057662576,"zeroline":false,"anchor":"x","title":{"text":"Unique Event Medals Won","font":{"color":"rgba(248,250,252,1)","family":"","size":17.268576172685766}},"hoverformat":".2f"},"shapes":[],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(248,250,252,1)","family":"","size":13.814860938148611},"orientation":"h","x":0.050000000000000003,"y":1.1200000000000001,"xanchor":"center","yanchor":"bottom","title":{"text":"Region / Group","font":{"color":"rgba(248,250,252,1)","family":"","size":17.268576172685766}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"2fc2366d85c2":{"x":{},"y":{},"colour":{},"type":"scatter"},"2fc2423fde2f":{"x":{},"y":{},"colour":{}}},"cur_data":"2fc2366d85c2","visdat":{"2fc2366d85c2":["function (y) ","x"],"2fc2423fde2f":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="top-olympic-sports-usa-vs.-selected-european-countries" class="level2">
+<h2 class="anchored" data-anchor-id="top-olympic-sports-usa-vs.-selected-european-countries">2. Top Olympic Sports: USA vs.&nbsp;Selected European Countries</h2>
+<div class="dashboard-card">
+<p>Which sports drive these medal totals? The chart below shows the <strong>top 10 medal-winning sports</strong> across the USA and our 12 selected European countries from 1896 to 2016.</p>
+<p>Even when compared against 12 European countries combined, the <strong>United States actually leads in Swimming (<code>550</code> vs.&nbsp;<code>411</code>)</strong> and is nearly tied in <strong>Athletics (<code>816</code> vs.&nbsp;<code>822</code>)</strong>! Meanwhile, the selected European nations have a large collective advantage in <strong>Fencing (<code>424</code> vs.&nbsp;<code>32</code>)</strong>, <strong>Cycling (<code>423</code> vs.&nbsp;<code>57</code>)</strong>, <strong>Canoeing (<code>329</code> vs.&nbsp;<code>16</code>)</strong>, and <strong>Rowing (<code>314</code> vs.&nbsp;<code>89</code>)</strong>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show R Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the top 10 sports overall by unique event medals among USA + 12 European countries</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>top_10_sports <span class="ot">&lt;-</span> medals_unique <span class="sc">|&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(NOC <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"USA"</span>, euro_nocs)) <span class="sc">|&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Sport, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">10</span>) <span class="sc">|&gt;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(Sport)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Count medals by Sport and Region for those top 10 sports</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>sports_comparison <span class="ot">&lt;-</span> medals_unique <span class="sc">|&gt;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(NOC <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"USA"</span>, euro_nocs), Sport <span class="sc">%in%</span> top_10_sports) <span class="sc">|&gt;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">Group =</span> <span class="fu">if_else</span>(</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>      NOC <span class="sc">==</span> <span class="st">"USA"</span>,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>      <span class="st">"United States (USA)"</span>,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Selected Europe (12 Countries)"</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Sport, Group, <span class="at">name =</span> <span class="st">"Medals"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Sport =</span> <span class="fu">fct_reorder</span>(Sport, Medals, <span class="at">.fun =</span> sum)) <span class="co"># Order sports by total medals</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Build horizontal grouped bar chart</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(sports_comparison, <span class="fu">aes</span>(<span class="at">x =</span> Sport, <span class="at">y =</span> Medals, <span class="at">fill =</span> Group)) <span class="sc">+</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">"dodge"</span>, <span class="at">width =</span> <span class="fl">0.72</span>) <span class="sc">+</span> <span class="co"># Side-by-side bars for USA vs Europe</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span> <span class="co"># Flip axes so sport names are easy to read</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Selected Europe (12 Countries)"</span> <span class="ot">=</span> <span class="st">"#ec4899"</span>,</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>      <span class="st">"United States (USA)"</span> <span class="ot">=</span> <span class="st">"#fbbf24"</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Top 10 Olympic Sports: USA vs. 12 European Countries (1896–2016)"</span>,</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Unique event medals won in the most contested Olympic sports"</span>,</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Olympic Sport"</span>,</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Unique Event Medals Won"</span>,</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Region / Group"</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#151c33"</span>, <span class="at">color =</span> <span class="cn">NA</span>),</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#151c33"</span>, <span class="at">color =</span> <span class="cn">NA</span>),</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"#2a3558"</span>),</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#f8fafc"</span>),</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#cbd5e1"</span>),</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"top"</span></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(p2, <span class="at">tooltip =</span> <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"fill"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layout</span>(</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">paper_bgcolor =</span> <span class="st">"#151c33"</span>,</span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot_bgcolor =</span> <span class="st">"#151c33"</span>,</span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">font =</span> <span class="fu">list</span>(<span class="at">color =</span> <span class="st">"#f8fafc"</span>),</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend =</span> <span class="fu">list</span>(<span class="at">orientation =</span> <span class="st">"h"</span>, <span class="at">x =</span> <span class="fl">0.05</span>, <span class="at">y =</span> <span class="fl">1.12</span>)</span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-78a11d6cb427bb0bf4b5" style="width:100%;height:557px;"></div>
+<script type="application/json" data-for="htmlwidget-78a11d6cb427bb0bf4b5">{"x":{"data":[{"orientation":"h","width":[0.35999999999999943,0.35999999999999943,0.35999999999999988,0.35999999999999943,0.35999999999999943,0.35999999999999965,0.35999999999999988,0.35999999999999943,0.35999999999999943,0.35999999999999943],"base":[0,0,0,0,0,0,0,0,0,0],"x":[822,262,329,423,424,245,314,336,411,366],"y":[9.8200000000000003,2.8200000000000003,0.82000000000000028,6.8200000000000003,5.8200000000000003,1.8200000000000003,3.8200000000000003,4.8200000000000003,8.8200000000000003,7.8200000000000003],"text":["Sport: Athletics<br />Medals: 822<br />Group: Selected Europe (12 Countries)","Sport: Boxing<br />Medals: 262<br />Group: Selected Europe (12 Countries)","Sport: Canoeing<br />Medals: 329<br />Group: Selected Europe (12 Countries)","Sport: Cycling<br />Medals: 423<br />Group: Selected Europe (12 Countries)","Sport: Fencing<br />Medals: 424<br />Group: Selected Europe (12 Countries)","Sport: Gymnastics<br />Medals: 245<br />Group: Selected Europe (12 Countries)","Sport: Rowing<br />Medals: 314<br />Group: Selected Europe (12 Countries)","Sport: Shooting<br />Medals: 336<br />Group: Selected Europe (12 Countries)","Sport: Swimming<br />Medals: 411<br />Group: Selected Europe (12 Countries)","Sport: Wrestling<br />Medals: 366<br />Group: Selected Europe (12 Countries)"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(236,72,153,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"name":"Selected Europe (12 Countries)","legendgroup":"Selected Europe (12 Countries)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":[0.35999999999999943,0.35999999999999943,0.35999999999999988,0.35999999999999943,0.35999999999999943,0.35999999999999965,0.35999999999999988,0.35999999999999943,0.35999999999999943,0.35999999999999943],"base":[0,0,0,0,0,0,0,0,0,0],"x":[816,113,16,57,32,113,89,110,550,128],"y":[10.18,3.1799999999999997,1.1799999999999997,7.1799999999999997,6.1799999999999997,2.1799999999999997,4.1799999999999997,5.1799999999999997,9.1799999999999997,8.1799999999999997],"text":["Sport: Athletics<br />Medals: 816<br />Group: United States (USA)","Sport: Boxing<br />Medals: 113<br />Group: United States (USA)","Sport: Canoeing<br />Medals:  16<br />Group: United States (USA)","Sport: Cycling<br />Medals:  57<br />Group: United States (USA)","Sport: Fencing<br />Medals:  32<br />Group: United States (USA)","Sport: Gymnastics<br />Medals: 113<br />Group: United States (USA)","Sport: Rowing<br />Medals:  89<br />Group: United States (USA)","Sport: Shooting<br />Medals: 110<br />Group: United States (USA)","Sport: Swimming<br />Medals: 550<br />Group: United States (USA)","Sport: Wrestling<br />Medals: 128<br />Group: United States (USA)"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(251,191,36,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"name":"United States (USA)","legendgroup":"United States (USA)","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":45.356579493565803,"r":8.6342880863428828,"b":44.034869240348698,"l":99.294312992943148},"plot_bgcolor":"#151c33","paper_bgcolor":"#151c33","font":{"color":"#f8fafc","family":"","size":17.268576172685766},"title":{"text":"Top 10 Olympic Sports: USA vs. 12 European Countries (1896–2016)","font":{"color":"rgba(248,250,252,1)","family":"","size":20.722291407222919},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-41.100000000000001,863.10000000000002],"tickmode":"array","ticktext":["0","200","400","600","800"],"tickvals":[0,200,400,600,800],"categoryorder":"array","categoryarray":["0","200","400","600","800"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714414,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(203,213,225,1)","family":"","size":13.814860938148611},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(42,53,88,1)","gridwidth":0.78493528057662576,"zeroline":false,"anchor":"y","title":{"text":"Unique Event Medals Won","font":{"color":"rgba(248,250,252,1)","family":"","size":17.268576172685766}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.40000000000000002,10.6],"tickmode":"array","ticktext":["Canoeing","Gymnastics","Boxing","Rowing","Shooting","Fencing","Cycling","Wrestling","Swimming","Athletics"],"tickvals":[1,2,3,4,5,6.0000000000000009,7,8,9,10],"categoryorder":"array","categoryarray":["Canoeing","Gymnastics","Boxing","Rowing","Shooting","Fencing","Cycling","Wrestling","Swimming","Athletics"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714414,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(203,213,225,1)","family":"","size":13.814860938148611},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(42,53,88,1)","gridwidth":0.78493528057662576,"zeroline":false,"anchor":"x","title":{"text":"Olympic Sport","font":{"color":"rgba(248,250,252,1)","family":"","size":17.268576172685766}},"hoverformat":".2f"},"shapes":[],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(248,250,252,1)","family":"","size":13.814860938148611},"orientation":"h","x":0.050000000000000003,"y":1.1200000000000001,"xanchor":"center","yanchor":"bottom","title":{"text":"Region / Group","font":{"color":"rgba(248,250,252,1)","family":"","size":17.268576172685766}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"2fc223f4df2b":{"x":{},"y":{},"fill":{},"type":"bar"}},"cur_data":"2fc223f4df2b","visdat":{"2fc223f4df2b":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="focus-on-spain-olympic-medal-history-19002016" class="level2">
+<h2 class="anchored" data-anchor-id="focus-on-spain-olympic-medal-history-19002016">3. Focus on Spain: Olympic Medal History (1900–2016)</h2>
+<div class="dashboard-card">
+<p>Because I am from Spain (<code>ESP</code>), I wanted to take a closer look at how Spain’s Olympic performance has evolved over time. Through 2016, Spain has won <strong>150 unique event medals</strong> (<strong>45 Gold</strong>, <strong>63 Silver</strong>, and <strong>42 Bronze</strong>), with its top sports being <strong>Sailing (19 medals)</strong>, <strong>Canoeing (16)</strong>, <strong>Cycling (15)</strong>, <strong>Athletics (14)</strong>, and <strong>Tennis (12)</strong>.</p>
+<p>As the chart below clearly shows, <strong>1992 was the turning point in Spanish Olympic history</strong>. When Barcelona hosted the 1992 Summer Olympics, Spain invested heavily in athlete training and won <strong>23 total medals in 1992</strong> (22 in Summer—including 13 Golds—and 1 Bronze in Winter). Since 1992, Spain has remained a strong Olympic contender at every Summer Games through 2016.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show R Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter unique medals for Spain (ESP) and order Medal factor levels</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>spain_medals <span class="ot">&lt;-</span> medals_unique <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(NOC <span class="sc">==</span> <span class="st">"ESP"</span>) <span class="sc">|&gt;</span> <span class="co"># Keep only Spain</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Medal =</span> <span class="fu">factor</span>(Medal, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Gold"</span>, <span class="st">"Silver"</span>, <span class="st">"Bronze"</span>))) <span class="sc">|&gt;</span> <span class="co"># Order Gold, Silver, Bronze</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Year, Medal, <span class="at">name =</span> <span class="st">"Medals"</span>) <span class="co"># Count Spain's medals per Olympic year and type</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a stacked bar chart of Spain's medals over time</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(spain_medals, <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> Medals, <span class="at">fill =</span> Medal)) <span class="sc">+</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="fl">2.8</span>) <span class="sc">+</span> <span class="co"># Stacked bars for each Olympic year Spain won a medal</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Gold"</span> <span class="ot">=</span> <span class="st">"#fbbf24"</span>,   <span class="co"># Gold accent</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Silver"</span> <span class="ot">=</span> <span class="st">"#cbd5e1"</span>, <span class="co"># Crisp silver</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Bronze"</span> <span class="ot">=</span> <span class="st">"#ec4899"</span>  <span class="co"># Vibrant pink accent for Bronze</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1900</span>, <span class="dv">2016</span>, <span class="at">by =</span> <span class="dv">8</span>)) <span class="sc">+</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Spain's Olympic Medal History by Medal Type (1900–2016)"</span>,</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Notice the dramatic breakthrough at the 1992 Barcelona Games (23 total medals)"</span>,</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Olympic Year"</span>,</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Unique Event Medals Won by Spain"</span>,</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Medal Type"</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#151c33"</span>, <span class="at">color =</span> <span class="cn">NA</span>),</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#151c33"</span>, <span class="at">color =</span> <span class="cn">NA</span>),</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"#2a3558"</span>),</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#f8fafc"</span>),</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#cbd5e1"</span>),</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"top"</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(p3, <span class="at">tooltip =</span> <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>, <span class="st">"fill"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layout</span>(</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">paper_bgcolor =</span> <span class="st">"#151c33"</span>,</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot_bgcolor =</span> <span class="st">"#151c33"</span>,</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">font =</span> <span class="fu">list</span>(<span class="at">color =</span> <span class="st">"#f8fafc"</span>),</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend =</span> <span class="fu">list</span>(<span class="at">orientation =</span> <span class="st">"h"</span>, <span class="at">x =</span> <span class="fl">0.25</span>, <span class="at">y =</span> <span class="fl">1.12</span>)</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-81b0e11e42abcdeee971" style="width:100%;height:510px;"></div>
+<script type="application/json" data-for="htmlwidget-81b0e11e42abcdeee971">{"x":{"data":[{"orientation":"v","width":[2.8000000000001819,2.8000000000001819,2.8000000000001819,2.8000000000001819,2.8000000000001819,2.8000000000001819,2.8000000000001819,2.8000000000001819,2.8000000000001819,2.8000000000001819,2.8000000000001819,2.8000000000001819,2.8000000000001819],"base":[0,0,1,5,4,3,10,12,8,17,13,14,10],"x":[1900,1928,1972,1980,1984,1988,1992,1996,2000,2004,2008,2012,2016],"y":[1,1,1,1,1,1,13,5,3,3,5,3,7],"text":["Year: 1900<br />Medals:  1<br />Medal: Gold","Year: 1928<br />Medals:  1<br />Medal: Gold","Year: 1972<br />Medals:  1<br />Medal: Gold","Year: 1980<br />Medals:  1<br />Medal: Gold","Year: 1984<br />Medals:  1<br />Medal: Gold","Year: 1988<br />Medals:  1<br />Medal: Gold","Year: 1992<br />Medals: 13<br />Medal: Gold","Year: 1996<br />Medals:  5<br />Medal: Gold","Year: 2000<br />Medals:  3<br />Medal: Gold","Year: 2004<br />Medals:  3<br />Medal: Gold","Year: 2008<br />Medals:  5<br />Medal: Gold","Year: 2012<br />Medals:  3<br />Medal: Gold","Year: 2016<br />Medals:  7<br />Medal: Gold"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(251,191,36,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"name":"Gold","legendgroup":"Gold","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[2.8000000000001819,2.8000000000001819,2.8000000000001819,2.8000000000001819,2.8000000000001819,2.8000000000001819,2.8000000000001819,2.8000000000001819,2.8000000000001819,2.8000000000001819,2.8000000000001819,2.8000000000001819,2.8000000000001819,2.8000000000001819],"base":[0,0,0,0,2,2,2,3,6,5,6,3,4,6],"x":[1920,1948,1952,1976,1980,1984,1988,1992,1996,2000,2004,2008,2012,2016],"y":[2,1,1,2,3,2,1,7,6,3,11,10,10,4],"text":["Year: 1920<br />Medals:  2<br />Medal: Silver","Year: 1948<br />Medals:  1<br />Medal: Silver","Year: 1952<br />Medals:  1<br />Medal: Silver","Year: 1976<br />Medals:  2<br />Medal: Silver","Year: 1980<br />Medals:  3<br />Medal: Silver","Year: 1984<br />Medals:  2<br />Medal: Silver","Year: 1988<br />Medals:  1<br />Medal: Silver","Year: 1992<br />Medals:  7<br />Medal: Silver","Year: 1996<br />Medals:  6<br />Medal: Silver","Year: 2000<br />Medals:  3<br />Medal: Silver","Year: 2004<br />Medals: 11<br />Medal: Silver","Year: 2008<br />Medals: 10<br />Medal: Silver","Year: 2012<br />Medals: 10<br />Medal: Silver","Year: 2016<br />Medals:  4<br />Medal: Silver"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(203,213,225,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"name":"Silver","legendgroup":"Silver","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":[2.8000000000001819,2.8000000000001819,2.8000000000001819,2.8000000000001819,2.8000000000001819,2.8000000000001819,2.8000000000001819,2.8000000000001819,2.8000000000001819,2.8000000000001819,2.8000000000001819,2.8000000000001819,2.8000000000001819],"base":[0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[1932,1960,1972,1980,1984,1988,1992,1996,2000,2004,2008,2012,2016],"y":[1,1,1,2,2,2,3,6,5,6,3,4,6],"text":["Year: 1932<br />Medals:  1<br />Medal: Bronze","Year: 1960<br />Medals:  1<br />Medal: Bronze","Year: 1972<br />Medals:  1<br />Medal: Bronze","Year: 1980<br />Medals:  2<br />Medal: Bronze","Year: 1984<br />Medals:  2<br />Medal: Bronze","Year: 1988<br />Medals:  2<br />Medal: Bronze","Year: 1992<br />Medals:  3<br />Medal: Bronze","Year: 1996<br />Medals:  6<br />Medal: Bronze","Year: 2000<br />Medals:  5<br />Medal: Bronze","Year: 2004<br />Medals:  6<br />Medal: Bronze","Year: 2008<br />Medals:  3<br />Medal: Bronze","Year: 2012<br />Medals:  4<br />Medal: Bronze","Year: 2016<br />Medals:  6<br />Medal: Bronze"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(236,72,153,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"name":"Bronze","legendgroup":"Bronze","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":45.356579493565803,"r":8.6342880863428828,"b":44.034869240348698,"l":44.034869240348698},"plot_bgcolor":"#151c33","paper_bgcolor":"#151c33","font":{"color":"#f8fafc","family":"","size":17.268576172685766},"title":{"text":"Spain's Olympic Medal History by Medal Type (1900–2016)","font":{"color":"rgba(248,250,252,1)","family":"","size":20.722291407222919},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[1892.6599999999999,2023.3400000000001],"tickmode":"array","ticktext":["1900","1908","1916","1924","1932","1940","1948","1956","1964","1972","1980","1988","1996","2004","2012"],"tickvals":[1900,1908,1916,1924,1932,1940,1948,1956,1964,1972,1980,1988,1996,2004,2012],"categoryorder":"array","categoryarray":["1900","1908","1916","1924","1932","1940","1948","1956","1964","1972","1980","1988","1996","2004","2012"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714414,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(203,213,225,1)","family":"","size":13.814860938148611},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(42,53,88,1)","gridwidth":0.78493528057662565,"zeroline":false,"anchor":"y","title":{"text":"Olympic Year","font":{"color":"rgba(248,250,252,1)","family":"","size":17.268576172685766}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-1.1500000000000001,24.149999999999999],"tickmode":"array","ticktext":["0","5","10","15","20"],"tickvals":[0,5,10,14.999999999999998,20],"categoryorder":"array","categoryarray":["0","5","10","15","20"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714414,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(203,213,225,1)","family":"","size":13.814860938148611},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(42,53,88,1)","gridwidth":0.78493528057662576,"zeroline":false,"anchor":"x","title":{"text":"Unique Event Medals Won by Spain","font":{"color":"rgba(248,250,252,1)","family":"","size":17.268576172685766}},"hoverformat":".2f"},"shapes":[],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(248,250,252,1)","family":"","size":13.814860938148611},"orientation":"h","x":0.25,"y":1.1200000000000001,"xanchor":"center","yanchor":"bottom","title":{"text":"Medal Type","font":{"color":"rgba(248,250,252,1)","family":"","size":17.268576172685766}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"2fc21fcb86d9":{"x":{},"y":{},"fill":{},"type":"bar"}},"cur_data":"2fc21fcb86d9","visdat":{"2fc21fcb86d9":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+</section>
+<section id="conclusion-data-source" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion-data-source">Conclusion &amp; Data Source</h2>
+<div class="dashboard-card">
+<p>Looking at 120 years of Olympic data from <strong>1896 to 2016</strong>, the answer to <em>“Who dominates the Olympics?”</em> depends on how we frame the comparison:</p>
+<ul>
+<li><strong>As a group of 12 countries</strong>, our selected European nations have won more combined unique event medals (<code>6,849</code>) than the United States (<code>2,823</code>), largely because 12 separate countries can enter many more athletes and teams across every sport, especially in Cycling, Fencing, Canoeing, and Rowing.</li>
+<li><strong>As a single country</strong>, the <strong>United States</strong> is by far the most dominant individual nation in Olympic history, winning nearly triple the medals of any single European country and even beating all 12 European countries combined in Swimming.</li>
+<li><strong>Spain (<code>ESP</code>)</strong> transformed its Olympic program starting with the <strong>1992 Barcelona Olympics</strong>, growing from winning only a few medals per Games before 1992 to consistently winning between 11 and 20 medals at every Summer Olympics through 2016.</li>
+</ul>
+<p><strong>Original Dataset:</strong> <a href="https://www.kaggle.com/datasets/heesoo37/120-years-of-olympic-history-athletes-and-results">120 Years of Olympic History: Athletes and Results (Kaggle)</a></p>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
