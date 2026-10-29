@@ -1,0 +1,455 @@
+---
+title: "Europe vs. America: Who Dominates the Olympics?"
+subtitle: "Milestone 3 · Exploring 120 Years of Olympic History (1896–2016)"
+author: "Emma Acedo Lapieza"
+date: today
+format:
+  html:
+    theme: darkly
+    toc: true
+    toc-title: "Dashboard Sections"
+    page-layout: full
+    code-fold: true
+    code-summary: "Show R Code"
+    embed-resources: false
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{=html}
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap');
+
+:root {
+  --bg-navy: #0b1021;
+  --card-navy: #151c33;
+  --card-navy-light: #1d2642;
+  --accent-purple: #a855f7;
+  --accent-pink: #ec4899;
+  --accent-gold: #fbbf24;
+  --text-main: #f8fafc;
+  --text-muted: #cbd5e1;
+}
+
+body {
+  background-color: var(--bg-navy) !important;
+  color: var(--text-main) !important;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.65;
+}
+
+h1, h2, h3, .title {
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+h1.title {
+  background: linear-gradient(90deg, #fbbf24, #ec4899, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+  font-size: 2.5rem;
+}
+
+.subtitle {
+  color: var(--text-muted) !important;
+  font-size: 1.15rem;
+}
+
+h2 {
+  color: var(--accent-gold) !important;
+  border-bottom: 2px solid rgba(168, 85, 247, 0.35);
+  padding-bottom: 0.4rem;
+  margin-top: 2rem;
+}
+
+a {
+  color: var(--accent-pink) !important;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+a:hover {
+  color: var(--accent-gold) !important;
+  text-decoration: underline;
+}
+
+.dashboard-card {
+  background: linear-gradient(145deg, var(--card-navy), var(--card-navy-light));
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: 14px;
+  padding: 1.4rem 1.6rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 2rem 0;
+}
+
+.kpi-box {
+  background: linear-gradient(160deg, #161f3a, #1f193d);
+  border-top: 3px solid var(--accent-gold);
+  border-radius: 12px;
+  padding: 1.1rem 1.2rem;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+.kpi-box.purple {
+  border-top-color: var(--accent-purple);
+}
+
+.kpi-box.pink {
+  border-top-color: var(--accent-pink);
+}
+
+.kpi-value {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: var(--accent-gold);
+  margin-bottom: 0.2rem;
+}
+
+.kpi-box.purple .kpi-value {
+  color: #c084fc;
+}
+
+.kpi-box.pink .kpi-value {
+  color: #f472b6;
+}
+
+.kpi-label {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.note-callout {
+  background-color: rgba(236, 72, 153, 0.12);
+  border-left: 4px solid var(--accent-pink);
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  margin: 1.2rem 0;
+}
+</style>
+```
+
+```{r}
+#| label: setup
+
+library(tidyverse)
+library(plotly)
+
+# Load the real Kaggle Olympic dataset (271,116 rows and 15 columns)
+olympics <- read_csv("data/athlete_events.csv", show_col_types = FALSE)
+
+# Define a consistent group of 12 major European Olympic countries (including Spain)
+euro_nocs <- c(
+  "ESP", # Spain
+  "GBR", # Great Britain
+  "FRA", # France
+  "GER", # Germany
+  "ITA", # Italy
+  "SWE", # Sweden
+  "NOR", # Norway
+  "NED", # Netherlands
+  "HUN", # Hungary
+  "FIN", # Finland
+  "SUI", # Switzerland
+  "POL"  # Poland
+)
+
+# Count only one medal per unique event and country so team sports are not overcounted
+medals_unique <- olympics |>
+  filter(!is.na(Medal)) |> # Keep only medal-winning entries
+  distinct(Year, Season, Games, Sport, Event, NOC, Medal) # Deduplicate team medals
+```
+
+```{=html}
+<div class="kpi-grid">
+  <div class="kpi-box">
+    <div class="kpi-value">271,116</div>
+    <div class="kpi-label">Athlete Entries (1896–2016)</div>
+  </div>
+  <div class="kpi-box pink">
+    <div class="kpi-value">2,823</div>
+    <div class="kpi-label">USA Unique Event Medals</div>
+  </div>
+  <div class="kpi-box purple">
+    <div class="kpi-value">6,849</div>
+    <div class="kpi-label">Selected Europe (12 Countries)</div>
+  </div>
+  <div class="kpi-box">
+    <div class="kpi-value">150</div>
+    <div class="kpi-label">Spain Unique Event Medals</div>
+  </div>
+</div>
+```
+
+## Introduction
+
+::: {.dashboard-card}
+I decided to study the Olympics because I really like sports and I am interested in comparing the United States with European countries. I want to see who has won more medals, which sports different countries are best at, and how Olympic results have changed over time. I also want to focus a little more on Spain because I am from there.
+
+This project builds on my Milestone 2 work using the [**120 Years of Olympic History: Athletes and Results**](https://www.kaggle.com/datasets/heesoo37/120-years-of-olympic-history-athletes-and-results) dataset from Kaggle. The dataset contains **271,116 rows and 15 columns**, covering both Summer and Winter Olympic Games from **1896 to 2016**. Because the dataset ends in **2016**, more recent Olympic Games (such as Tokyo 2020 or Paris 2024) are not included in this analysis.
+:::
+
+## Variables Used in This Project
+
+::: {.dashboard-card}
+To explore Olympic performance across countries and over time, I use the following key variables from the dataset:
+
+- **`Year`**: to see how Olympic results and medal counts change over time from 1896 to 2016.
+- **`NOC` and `Team`**: to identify countries using their official National Olympic Committee (`NOC`) 3-letter codes and team names.
+- **`Sport` and `Event`**: to compare different sports (like Swimming, Athletics, and Sailing) and individual medal events.
+- **`Medal`**: to count `Gold`, `Silver`, and `Bronze` medals won.
+- **`Sex`**: to explore differences in participation and medal counts between male (`M`) and female (`F`) athletes.
+- **`Age`**: to explore athletes' ages across regions and sports.
+
+```{r}
+#| label: age-sex-summary
+
+# Quick summary of athlete age and sex among medalists in the USA and our 12 European countries
+olympics |>
+  filter(!is.na(Medal), NOC %in% c("USA", euro_nocs)) |> # Keep medalists in our study group
+  mutate(Region = if_else(NOC == "USA", "United States", "Selected Europe (12 Countries)")) |> # Group into USA vs Europe
+  group_by(Region, Sex) |>
+  summarise(
+    Medalist_Rows = n(), # Number of medal-winning athlete rows
+    Average_Age = round(mean(Age, na.rm = TRUE), 1), # Mean age of medalists
+    Median_Age = median(Age, na.rm = TRUE), # Median age of medalists
+    .groups = "drop"
+  ) |>
+  knitr::kable(
+    col.names = c("Region", "Sex", "Medalist Athlete Entries", "Average Age", "Median Age"),
+    caption = "Athlete Age and Sex Overview for Medalists (1896–2016)"
+  )
+```
+:::
+
+## Methodology: Counting Medals Fairly & Defining Europe
+
+::: {.dashboard-card}
+Two important choices make our comparison accurate and fair:
+
+1. **Counting unique event medals instead of athlete rows:** In the raw dataset, every player on a winning basketball, soccer, or rowing team gets their own row. If we simply counted rows, a single basketball gold medal would count as 12 medals! To avoid overcounting team sports, I use `distinct(Year, Season, Games, Sport, Event, NOC, Medal)` so that each country receives **one medal per event**.
+2. **Consistent European Selection (12 Countries):** Throughout all charts, I use a clearly defined set of 12 European Olympic countries: **Spain (`ESP`), Great Britain (`GBR`), France (`FRA`), Germany (`GER`), Italy (`ITA`), Sweden (`SWE`), Norway (`NOR`), Netherlands (`NED`), Hungary (`HUN`), Finland (`FIN`), Switzerland (`SUI`), and Poland (`POL`)**.
+
+::: {.note-callout}
+**Why Group vs. Individual Comparisons Matter:** Comparing the **United States (`2,823` medals)** against **12 European countries combined (`6,849` medals)** is very different from comparing individual countries. In the Olympics, each European nation sends its own full delegation of athletes and teams, so combining 12 countries naturally produces a larger group total. However, when we compare **individual countries one-on-one**, the United States (`2,823` medals) has won nearly three times as many medals as the highest-ranking European country in our group, Germany (`1,004`), followed by Great Britain (`919`) and France (`879`).
+:::
+:::
+
+---
+
+## 1. USA vs. Europe: Olympic Medals Over Time (1896–2016)
+
+::: {.dashboard-card}
+This first interactive chart tracks total unique event medals won in each Olympic year from **1896 to 2016** (combining Summer and Winter Games held in the same year). You can hover over any point to see the exact year and medal total.
+
+Notice how the 12 European countries combined usually win more medals as a group, while the United States alone reaches massive peaks (such as 1904 in St. Louis and 1984 in Los Angeles) and competes closely with an entire continent's worth of teams.
+
+```{r}
+#| label: chart-1-medals-over-time
+#| fig-height: 5.5
+
+# Count unique event medals by Year for the USA vs. the 12 selected European countries
+medals_by_year <- medals_unique |>
+  filter(NOC %in% c("USA", euro_nocs)) |> # Keep USA and selected European NOCs
+  mutate(
+    Group = if_else(
+      NOC == "USA",
+      "United States (USA)",
+      "Selected Europe (12 Countries Combined)"
+    )
+  ) |>
+  count(Year, Group, name = "Medals") # Count unique medals per year and group
+
+# Create the ggplot2 time-series line chart
+p1 <- ggplot(medals_by_year, aes(x = Year, y = Medals, color = Group)) +
+  geom_line(linewidth = 1.1) + # Draw trend lines over time
+  geom_point(size = 2.3) + # Highlight each Olympic year
+  scale_color_manual(
+    values = c(
+      "Selected Europe (12 Countries Combined)" = "#a855f7",
+      "United States (USA)" = "#fbbf24"
+    )
+  ) +
+  scale_x_continuous(breaks = seq(1896, 2016, by = 16)) +
+  labs(
+    title = "USA vs. Selected European Countries: Unique Event Medals Over Time",
+    subtitle = "Combined Summer & Winter Olympic medals per Olympic year (1896–2016)",
+    x = "Olympic Year",
+    y = "Unique Event Medals Won",
+    color = "Region / Group"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.background = element_rect(fill = "#151c33", color = NA),
+    panel.background = element_rect(fill = "#151c33", color = NA),
+    panel.grid.major = element_line(color = "#2a3558"),
+    panel.grid.minor = element_blank(),
+    text = element_text(color = "#f8fafc"),
+    axis.text = element_text(color = "#cbd5e1"),
+    legend.position = "top"
+  )
+
+# Convert to an interactive Plotly chart
+ggplotly(p1, tooltip = c("x", "y", "colour")) |>
+  layout(
+    paper_bgcolor = "#151c33",
+    plot_bgcolor = "#151c33",
+    font = list(color = "#f8fafc"),
+    legend = list(orientation = "h", x = 0.05, y = 1.12)
+  )
+```
+:::
+
+---
+
+## 2. Top Olympic Sports: USA vs. Selected European Countries
+
+::: {.dashboard-card}
+Which sports drive these medal totals? The chart below shows the **top 10 medal-winning sports** across the USA and our 12 selected European countries from 1896 to 2016.
+
+Even when compared against 12 European countries combined, the **United States actually leads in Swimming (`550` vs. `411`)** and is nearly tied in **Athletics (`816` vs. `822`)**! Meanwhile, the selected European nations have a large collective advantage in **Fencing (`424` vs. `32`)**, **Cycling (`423` vs. `57`)**, **Canoeing (`329` vs. `16`)**, and **Rowing (`314` vs. `89`)**.
+
+```{r}
+#| label: chart-2-top-sports
+#| fig-height: 6
+
+# Find the top 10 sports overall by unique event medals among USA + 12 European countries
+top_10_sports <- medals_unique |>
+  filter(NOC %in% c("USA", euro_nocs)) |>
+  count(Sport, sort = TRUE) |>
+  slice_head(n = 10) |>
+  pull(Sport)
+
+# Count medals by Sport and Region for those top 10 sports
+sports_comparison <- medals_unique |>
+  filter(NOC %in% c("USA", euro_nocs), Sport %in% top_10_sports) |>
+  mutate(
+    Group = if_else(
+      NOC == "USA",
+      "United States (USA)",
+      "Selected Europe (12 Countries)"
+    )
+  ) |>
+  count(Sport, Group, name = "Medals") |>
+  mutate(Sport = fct_reorder(Sport, Medals, .fun = sum)) # Order sports by total medals
+
+# Build horizontal grouped bar chart
+p2 <- ggplot(sports_comparison, aes(x = Sport, y = Medals, fill = Group)) +
+  geom_col(position = "dodge", width = 0.72) + # Side-by-side bars for USA vs Europe
+  coord_flip() + # Flip axes so sport names are easy to read
+  scale_fill_manual(
+    values = c(
+      "Selected Europe (12 Countries)" = "#ec4899",
+      "United States (USA)" = "#fbbf24"
+    )
+  ) +
+  labs(
+    title = "Top 10 Olympic Sports: USA vs. 12 European Countries (1896–2016)",
+    subtitle = "Unique event medals won in the most contested Olympic sports",
+    x = "Olympic Sport",
+    y = "Unique Event Medals Won",
+    fill = "Region / Group"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.background = element_rect(fill = "#151c33", color = NA),
+    panel.background = element_rect(fill = "#151c33", color = NA),
+    panel.grid.major = element_line(color = "#2a3558"),
+    panel.grid.minor = element_blank(),
+    text = element_text(color = "#f8fafc"),
+    axis.text = element_text(color = "#cbd5e1"),
+    legend.position = "top"
+  )
+
+ggplotly(p2, tooltip = c("x", "y", "fill")) |>
+  layout(
+    paper_bgcolor = "#151c33",
+    plot_bgcolor = "#151c33",
+    font = list(color = "#f8fafc"),
+    legend = list(orientation = "h", x = 0.05, y = 1.12)
+  )
+```
+:::
+
+---
+
+## 3. Focus on Spain: Olympic Medal History (1900–2016)
+
+::: {.dashboard-card}
+Because I am from Spain (`ESP`), I wanted to take a closer look at how Spain's Olympic performance has evolved over time. Through 2016, Spain has won **150 unique event medals** (**45 Gold**, **63 Silver**, and **42 Bronze**), with its top sports being **Sailing (19 medals)**, **Canoeing (16)**, **Cycling (15)**, **Athletics (14)**, and **Tennis (12)**.
+
+As the chart below clearly shows, **1992 was the turning point in Spanish Olympic history**. When Barcelona hosted the 1992 Summer Olympics, Spain invested heavily in athlete training and won **23 total medals in 1992** (22 in Summer—including 13 Golds—and 1 Bronze in Winter). Since 1992, Spain has remained a strong Olympic contender at every Summer Games through 2016.
+
+```{r}
+#| label: chart-3-spain-history
+#| fig-height: 5.5
+
+# Filter unique medals for Spain (ESP) and order Medal factor levels
+spain_medals <- medals_unique |>
+  filter(NOC == "ESP") |> # Keep only Spain
+  mutate(Medal = factor(Medal, levels = c("Gold", "Silver", "Bronze"))) |> # Order Gold, Silver, Bronze
+  count(Year, Medal, name = "Medals") # Count Spain's medals per Olympic year and type
+
+# Create a stacked bar chart of Spain's medals over time
+p3 <- ggplot(spain_medals, aes(x = Year, y = Medals, fill = Medal)) +
+  geom_col(width = 2.8) + # Stacked bars for each Olympic year Spain won a medal
+  scale_fill_manual(
+    values = c(
+      "Gold" = "#fbbf24",   # Gold accent
+      "Silver" = "#cbd5e1", # Crisp silver
+      "Bronze" = "#ec4899"  # Vibrant pink accent for Bronze
+    )
+  ) +
+  scale_x_continuous(breaks = seq(1900, 2016, by = 8)) +
+  labs(
+    title = "Spain's Olympic Medal History by Medal Type (1900–2016)",
+    subtitle = "Notice the dramatic breakthrough at the 1992 Barcelona Games (23 total medals)",
+    x = "Olympic Year",
+    y = "Unique Event Medals Won by Spain",
+    fill = "Medal Type"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.background = element_rect(fill = "#151c33", color = NA),
+    panel.background = element_rect(fill = "#151c33", color = NA),
+    panel.grid.major = element_line(color = "#2a3558"),
+    panel.grid.minor = element_blank(),
+    text = element_text(color = "#f8fafc"),
+    axis.text = element_text(color = "#cbd5e1"),
+    legend.position = "top"
+  )
+
+ggplotly(p3, tooltip = c("x", "y", "fill")) |>
+  layout(
+    paper_bgcolor = "#151c33",
+    plot_bgcolor = "#151c33",
+    font = list(color = "#f8fafc"),
+    legend = list(orientation = "h", x = 0.25, y = 1.12)
+  )
+```
+:::
+
+## Conclusion & Data Source
+
+::: {.dashboard-card}
+Looking at 120 years of Olympic data from **1896 to 2016**, the answer to *"Who dominates the Olympics?"* depends on how we frame the comparison:
+
+- **As a group of 12 countries**, our selected European nations have won more combined unique event medals (`6,849`) than the United States (`2,823`), largely because 12 separate countries can enter many more athletes and teams across every sport, especially in Cycling, Fencing, Canoeing, and Rowing.
+- **As a single country**, the **United States** is by far the most dominant individual nation in Olympic history, winning nearly triple the medals of any single European country and even beating all 12 European countries combined in Swimming.
+- **Spain (`ESP`)** transformed its Olympic program starting with the **1992 Barcelona Olympics**, growing from winning only a few medals per Games before 1992 to consistently winning between 11 and 20 medals at every Summer Olympics through 2016.
+
+**Original Dataset:** [120 Years of Olympic History: Athletes and Results (Kaggle)](https://www.kaggle.com/datasets/heesoo37/120-years-of-olympic-history-athletes-and-results)
+:::
